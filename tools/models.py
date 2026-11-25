@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """Check classes.json, stage prepared bodies for publishing, and pin their hashes.
 
-  python3 tools/models.py check [--weapons DIR] [--files]   validate the manifest; --files also hashes assets/models/
+  python3 tools/models.py check [--files]   validate the manifest; --files also hashes assets/models/
   python3 tools/models.py stage DIR [DIR...]                copy each class's prepared kit GLB (and .webp.glb) into
                                                             assets/models/ under the manifest's file names
   python3 tools/models.py pin                               write bytes and sha256 of the staged files into classes.json
 
 stage looks in every DIR (recursively) for `<body_id>.glb`, then `<prep name>_kit.glb`, where the prep name is the
 prep config's base name (swat.json -> swat_kit.glb), the names gs-player-char's tools/avatar_prep/kit_rig.py writes.
-Loadout ids are checked against fc-weapons' IDS when a checkout is beside this one (or at --weapons); CI has none
-and skips that part, saying so.
+Stats and loadouts are not here: Fatal Contact owns health, speed and weapons (its cvars, modes and fc-weapons).
 """
 import hashlib
 import json
@@ -22,9 +21,8 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(HERE, "classes.json")
 MODELS = os.path.join(HERE, "assets", "models")
 CLASS_KEYS = {"id", "display_name", "team", "side", "description", "body_id", "credits", "model", "lods", "skeleton",
-              "arms", "stats", "loadout"}
+              "arms"}
 MODEL_KEYS = {"file", "bytes", "sha256", "web_file", "web_bytes", "web_sha256"}
-STAT_KEYS = {"health", "speed", "sprint_speed_scale", "jump_scale"}
 
 
 def load():
@@ -40,22 +38,9 @@ def sha256(path):
     return h.hexdigest()
 
 
-def weapon_ids(where):
-    pack = os.path.join(where, "addons", "fc_weapons", "aw_weapon_pack.gd")
-    if not os.path.isfile(pack):
-        return None
-    src = open(pack).read()
-    m = re.search(r"const IDS: Array\[StringName\] = \[(.*?)\]", src, re.S)
-    return set(re.findall(r'&"([a-z0-9_]+)"', m.group(1))) if m else None
-
-
 def check(args):
     errors = []
     data = load()
-    weapons_dir = os.path.join(HERE, "..", "fc-weapons")
-    if "--weapons" in args:
-        weapons_dir = args[args.index("--weapons") + 1]
-    ids = weapon_ids(weapons_dir)
     if data.get("schema") != 1:
         errors.append("schema must be 1")
     seen, teams = set(), set()
@@ -77,13 +62,6 @@ def check(args):
             errors.append("%s: model.file must be <body_id>.glb (FC registers bodies by file name)" % cid)
         if [l.get("name") for l in c["lods"]] != ["LOD%d" % i for i in range(len(c["lods"]))]:
             errors.append("%s: lods must be LOD0..LODn in order" % cid)
-        if STAT_KEYS - set(c["stats"]):
-            errors.append("%s: stats need %s" % (cid, ", ".join(sorted(STAT_KEYS - set(c["stats"])))))
-        refs = [w for group in c["loadout"].values() for w in group]
-        if ids is not None:
-            for w in refs:
-                if w not in ids:
-                    errors.append("%s: loadout id %r is not an fc-weapons id" % (cid, w))
         for key in ("sha256", "web_sha256"):
             if not re.fullmatch(r"[0-9a-f]{64}", str(c["model"].get(key, ""))):
                 errors.append("%s: model.%s is not pinned (tools/models.py pin)" % (cid, key))
@@ -96,8 +74,7 @@ def check(args):
                     errors.append("%s: %s does not match the manifest" % (cid, c["model"][f]))
     for e in errors:
         print("classes.json: " + e, file=sys.stderr)
-    note = "" if ids is not None else " (fc-weapons not beside: loadout ids not checked)"
-    print("classes.json: %d classes, %d errors%s" % (len(seen), len(errors), note))
+    print("classes.json: %d classes, %d errors" % (len(seen), len(errors)))
     return 1 if errors else 0
 
 

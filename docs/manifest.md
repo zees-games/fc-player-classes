@@ -26,7 +26,5 @@
 | `lods` | `[{name, tris}]` in order `LOD0`, `LOD1`, ... These are the mesh names inside the GLB. | order |
 | `skeleton` | `rig` (`gs-player-char kit`), `bones`, `height_m`, and `prep_config`: the gs-player-char avatar prep config that built the body. | present |
 | `arms` | First-person arms: `source` (`body` means cut from the body mesh) and `forearm_ratio` (the kit_rig forearm stretch, or `null`). | present |
-| `stats` | `health`, `speed`, `sprint_speed_scale`, `jump_scale`. These are stubs at FC's defaults; FC does not read them yet. | keys |
-| `loadout.spawn`, `loadout.bot_preferred` | fc-weapons ids. | against fc-weapons `IDS` when a checkout is beside this one or given with `--weapons DIR` |
 
-CI has no fc-weapons checkout, so it skips the loadout-id check and says so in its output line.
+Stats and loadouts are not in the manifest: Fatal Contact owns health, speed and weapons (its cvars, modes and fc-weapons), and a second copy here would drift.

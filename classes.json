@@ -47,23 +47,6 @@
             "arms": {
                 "source": "body",
                 "forearm_ratio": 1.35
-            },
-            "stats": {
-                "health": 100,
-                "speed": 1.0,
-                "sprint_speed_scale": 1.0,
-                "jump_scale": 1.0
-            },
-            "loadout": {
-                "spawn": [
-                    "knife",
-                    "pistol"
-                ],
-                "bot_preferred": [
-                    "smg",
-                    "shotgun",
-                    "flash"
-                ]
             }
         },
         {
@@ -105,23 +88,6 @@
             "arms": {
                 "source": "body",
                 "forearm_ratio": null
-            },
-            "stats": {
-                "health": 100,
-                "speed": 1.0,
-                "sprint_speed_scale": 1.0,
-                "jump_scale": 1.0
-            },
-            "loadout": {
-                "spawn": [
-                    "knife",
-                    "pistol"
-                ],
-                "bot_preferred": [
-                    "rifle",
-                    "lmg",
-                    "frag"
-                ]
             }
         }
     ]

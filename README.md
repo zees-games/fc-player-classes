@@ -1,4 +1,4 @@
-The default player classes for [Fatal Contact](https://github.com/zees-games/game-fatal-contact): one class per team, each with a rigged body model, its LODs and a stub of stats and loadout. This repo holds only the manifest (`classes.json`), credits and tools. The models are on the GameSpice CDN and you fetch them with `./fetch-content.sh`.
+The default player classes for [Fatal Contact](https://github.com/zees-games/game-fatal-contact): one class per team, each with a rigged body model, and its LODs. This repo holds only the manifest (`classes.json`), credits and tools. The models are on the GameSpice CDN and you fetch them with `./fetch-content.sh`.
 
 Store page: [FC Player Classes (asset 152)](https://moddingcommunity.com/a/152-fc-player-classes)
 
@@ -8,12 +8,12 @@ Store page: [FC Player Classes (asset 152)](https://moddingcommunity.com/a/152-f
 
 ## Classes
 
-| Class | Team | Body file | LOD tris (0 / 1 / 2) | Spawn loadout | Bots prefer |
-|---|---|---|---|---|---|
-| SWAT | 1 (side a) | `fc_swat.glb` | 9999 / 3000 / 1200 | knife, pistol | smg, shotgun, flash |
-| Military | 2 (side b) | `fc_military.glb` | 9998 / 2997 / 784 | knife, pistol | rifle, lmg, frag |
+| Class | Team | Body file | LOD tris (0 / 1 / 2) |
+|---|---|---|---|
+| SWAT | 1 (side a) | `fc_swat.glb` | 9999 / 3000 / 1200 |
+| Military | 2 (side b) | `fc_military.glb` | 9998 / 2997 / 784 |
 
-Both bodies use the gs-player-char kit skeleton (43 bones, 1.8 m), so every kit animation plays on them. Each one ships as a `.glb` with PNG/JPEG textures and as a `.webp.glb` for web builds. Loadout ids refer to [fc-weapons](https://github.com/zees-games/fc-weapons). The schema is in [docs/manifest.md](docs/manifest.md).
+Both bodies use the gs-player-char kit skeleton (43 bones, 1.8 m), so every kit animation plays on them. Each one ships as a `.glb` with PNG/JPEG textures and as a `.webp.glb` for web builds. The schema is in [docs/manifest.md](docs/manifest.md).
 
 ## Quick start
 
