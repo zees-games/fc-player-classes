@@ -1,0 +1,128 @@
+{
+    "schema": 1,
+    "game": "game-fatal-contact",
+    "store": {
+        "id": "gamemann/fc-player-classes",
+        "into": "assets/models",
+        "lock": "content.lock.json",
+        "prod_asset": 152
+    },
+    "classes": [
+        {
+            "id": "swat",
+            "display_name": "SWAT",
+            "team": 1,
+            "side": "a",
+            "description": "Police tactical unit: helmet, night-vision goggles, balaclava, plate carrier.",
+            "body_id": "fc_swat",
+            "credits": "swat",
+            "model": {
+                "file": "fc_swat.glb",
+                "bytes": 1128256,
+                "sha256": "f07ad7e804ac346c05d87b65439db29654566767bf1a826964cf94cbf745aecb",
+                "web_file": "fc_swat.webp.glb",
+                "web_bytes": 1101512,
+                "web_sha256": "d317b2e2ce9baae70d821a4ba6e813db1de18e8a85a599c6e93043da1dad1537"
+            },
+            "lods": [
+                {
+                    "name": "LOD0",
+                    "tris": 9999
+                },
+                {
+                    "name": "LOD1",
+                    "tris": 3000
+                },
+                {
+                    "name": "LOD2",
+                    "tris": 1200
+                }
+            ],
+            "skeleton": {
+                "rig": "gs-player-char kit",
+                "bones": 43,
+                "height_m": 1.8,
+                "prep_config": "gs-player-char/tools/avatar_prep/swat.json"
+            },
+            "arms": {
+                "source": "body",
+                "forearm_ratio": 1.35
+            },
+            "stats": {
+                "health": 100,
+                "speed": 1.0,
+                "sprint_speed_scale": 1.0,
+                "jump_scale": 1.0
+            },
+            "loadout": {
+                "spawn": [
+                    "knife",
+                    "pistol"
+                ],
+                "bot_preferred": [
+                    "smg",
+                    "shotgun",
+                    "flash"
+                ]
+            }
+        },
+        {
+            "id": "military",
+            "display_name": "Military",
+            "team": 2,
+            "side": "b",
+            "description": "Infantry soldier: knitted cap, tactical vest, camouflage trousers.",
+            "body_id": "fc_military",
+            "credits": "military",
+            "model": {
+                "file": "fc_military.glb",
+                "bytes": 975908,
+                "sha256": "595466f202bc1e14e072f400423a11dc45390ce8d4d6f387f7087019b00aaf25",
+                "web_file": "fc_military.webp.glb",
+                "web_bytes": 929580,
+                "web_sha256": "da178b4ba7768ed157ed6dabc5405430f4a5089d76616f37f3290eb347cd8ca7"
+            },
+            "lods": [
+                {
+                    "name": "LOD0",
+                    "tris": 9998
+                },
+                {
+                    "name": "LOD1",
+                    "tris": 2997
+                },
+                {
+                    "name": "LOD2",
+                    "tris": 784
+                }
+            ],
+            "skeleton": {
+                "rig": "gs-player-char kit",
+                "bones": 43,
+                "height_m": 1.8,
+                "prep_config": "gs-player-char/tools/avatar_prep/military.json"
+            },
+            "arms": {
+                "source": "body",
+                "forearm_ratio": null
+            },
+            "stats": {
+                "health": 100,
+                "speed": 1.0,
+                "sprint_speed_scale": 1.0,
+                "jump_scale": 1.0
+            },
+            "loadout": {
+                "spawn": [
+                    "knife",
+                    "pistol"
+                ],
+                "bot_preferred": [
+                    "rifle",
+                    "lmg",
+                    "frag"
+                ]
+            }
+        }
+    ]
+}

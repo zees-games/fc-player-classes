@@ -1,0 +1,22 @@
+# The shared check from gamespice-platform/ci. There is no Godot project here: the shell command
+# validates classes.json and checks that the publish and fetch scripts parse.
+name: CI
+
+on:
+    push:
+        branches: ['**']
+        paths-ignore:
+            - '**/*.md'
+            - 'docs/img/**'
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    validate:
+        uses: gamespice-platform/ci/.github/workflows/validate.yml@v1.4.0
+        with:
+            efficiency: true
+            godot: false
+            shell-command: 'python3 tools/models.py check && bash -n tools/publish.sh && bash -n fetch-content.sh'
+        secrets:
+            DEPS_TOKEN: ${{ secrets.GS_DEPS_TOKEN }}

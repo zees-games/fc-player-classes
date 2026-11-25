@@ -1,0 +1,5 @@
+[
+    {"paths": ["classes.json", "tools", "docs", "fetch-content.sh", "fetch-content.ps1", "README.md", "CREDITS.md", "CLAUDE.md"], "licence": "MIT", "author": "Christian Deacon", "url": "https://github.com/zees-games/fc-player-classes", "title": "Class manifest and tools (original work)"},
+    {"paths": ["docs/img/swat_lods.jpg", "assets/models/fc_swat.glb", "assets/models/fc_swat.webp.glb"], "licence": "CC-BY-4.0", "author": "SpatialNeglect", "url": "https://sketchfab.com/3d-models/swat-operator-4k-followers-special-remaster-f6923917c8014578b1c1cb2b4c249268", "title": "S.W.A.T. Operator (models fetched from the CDN, not in git; see CREDITS.md for the parts)"},
+    {"paths": ["docs/img/military_lods.jpg", "assets/models/fc_military.glb", "assets/models/fc_military.webp.glb"], "licence": "CC-BY-4.0", "author": "jayb3e", "url": "https://sketchfab.com/3d-models/game-ready-military-character-8cd04f8d8ca94f7fb911fef2d3802f13", "title": "Game Ready Military Character (models fetched from the CDN, not in git)"}
+]

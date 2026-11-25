@@ -1,0 +1,6 @@
+.godot/
+__pycache__/
+.DS_Store
+# The models live on the CDN only: ./fetch-content.sh writes them here.
+assets/models/*
+!assets/models/licence.json
