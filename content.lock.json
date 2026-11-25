@@ -1,15 +1,15 @@
 {
 	"format": 1,
 	"mirrors": [],
-	"origin": "https://dev.dotgames.org/content",
+	"origin": "https://content.gamespice.net/content",
 	"packs": [
 		{
 			"id": "gamemann/fc-player-classes",
 			"into": "assets/models",
 			"kind": "store",
-			"manifest_sha256": "cfed88f6ddf9b781fc273a13f50207baed88d6002e9d0972c7dcddf362746828",
+			"manifest_sha256": "aed74e542c8075ed32c66e80dcdf1948574dc8ce575414c38b403eb47b393ec8",
 			"optional": false,
-			"version": "0.1.0-dev.1"
+			"version": "0.1.0"
 		}
 	]
 }
